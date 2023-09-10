@@ -12,10 +12,17 @@ class DetalleVentaServicio {
     
     private Servicios servicios;
     private String detalle;
+    private float precio;
 
-    public DetalleVentaServicio(Servicios servicios, String detalle) {
+    public DetalleVentaServicio(Servicios servicios, String detalle, float precio) {
         this.servicios = servicios;
         this.detalle = detalle;
+        this.precio = precio;
+    }
+    
+    public double aplicarDescuento()
+    {
+        return this.precio - (this.precio * 0.2);
     }
 
     @Override

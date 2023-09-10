@@ -18,6 +18,26 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+    
+    public boolean cambiarContraseña(String contraseña)
+    {
+        if (!contraseña.isEmpty()) {
+            this.contraseña = contraseña;
+        
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+
     @Override
     public String toString() {
         return "Usuario{" + "usuario=" + usuario + ", contrase\u00f1a=" + contraseña + '}';

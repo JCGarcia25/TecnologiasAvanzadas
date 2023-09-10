@@ -8,17 +8,38 @@ package tecnologias;
  *
  * @author Estudiante_MCA
  */
-public class Docente extends Persona{
+class Docente extends Persona{
     
-    protected String materia;
+    private String[] materias = {"matematicas", "programacion", "algoritmia"};
+    private float salario;
+    private String[] estudiantes = {"10", "15", "20"};
 
-    public Docente(String nombre, int edad, int cedula, String materia) {
+    public Docente(String nombre, int edad, int cedula) {
         super(nombre, edad, cedula);
-        this.materia = materia;
+    }
+
+    public float getSalario() {
+        return this.salario;
+    }
+    
+    public String estudiantesPorMateria()
+    {
+        // Verifica que ambos arreglos tengan la misma longitud
+        if (this.materias.length != this.estudiantes.length) {
+            throw new IllegalArgumentException("Hay diferente cantidad de materias y notas");
+        }
+        
+        String resultado = "";
+
+        for (int i = 0; i < this.materias.length; i++) {
+            resultado += "La cantidad de estudiantes de: " + this.materias[i] + "es de: " + this.estudiantes[i] + "\n"; 
+        }
+        
+        return resultado;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "Docente{" + "materia=" + materia + '}';
+        return "Docente{" + "materias=" + materias + ", salario=" + salario + ", estudiantes=" + estudiantes + '}';
     }
 }

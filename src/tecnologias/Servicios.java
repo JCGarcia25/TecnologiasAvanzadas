@@ -16,6 +16,11 @@ public class Servicios {
     {
         this.servicio = servicio;
     }
+    
+    public void cancelarServicio(Servicios servicio)
+    {
+        servicio = null;
+    }
 
     @Override
     public String toString() {

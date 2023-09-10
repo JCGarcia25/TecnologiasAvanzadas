@@ -15,18 +15,35 @@ public class Tecnologias {
      */
     public static void main(String[] args)
     {
+        // instanciar la conexión a base de datos
+        Conexion conexion = new Conexion();
+        conexion.getConexion();
+        
+        // Instanciar la clase para realizar el login de los usuarios en la aplicacion
+        LoginUsuarios login = new LoginUsuarios(conexion);
+
         // Generar personas
         Persona persona1 = new Persona("johan", 21, 1006700371);
         Persona persona2 = new Persona();
         
         // Generar Estudiante - Empleado - Docente
         Estudiante estudiante = new Estudiante("Nelson", 23, 1121967543, "Unillanos");
+        
         Empleado empleado = new Empleado("Daniel", 20, 1002735678, "TL");
-        Docente docente = new Docente("FajarGOD", 65, 77777777, "El papa de Denis Ritch");
-        Cargo cargo = new Cargo("Ser faker");
+        
+        Docente docente = new Docente("FajarGOD", 65, 77777777);
+        
+        // Instanciar cargo - Empresa
+        Cargo cargo = new Cargo("Ingeniero");
+        
         Empresa empresa = new Empresa("ignicion games");
-        Servicios servicio = new Servicios("programar");
-        DetalleVentaServicio detalleVentaServicio = new DetalleVentaServicio(servicio, "se hizo la chamba");
+        
+        // Instanciar servicios
+        Servicios servicio1 = new Servicios("programar");
+        Servicios servicio2 = new Servicios("diseñar");
+        
+        DetalleVentaServicio detalleVentaServicio = new DetalleVentaServicio(servicio1, "se hizo la chamba", 10000);
+        
         VentaServicio ventaServicio = new VentaServicio(persona2, detalleVentaServicio, 1);
 
         // Generar Persona Cargo
@@ -35,8 +52,18 @@ public class Tecnologias {
         // Generar Facturacion
         Facturacion factura1 = new Facturacion(ventaServicio, "1");
         
-        System.out.println(factura1.toString());
-        System.out.println(personaCargo1.toString());
+        
+        // Parte derecha LOGIN
+        Usuario usuario1 = new Usuario("johan", "johan");
+        Usuario usuario2 = new Usuario("esneyder", "caicedo");
+        
+        // Instanciar plataformas
+        Plataforma plataforma1 = new Plataforma("Netflix");
+        Plataforma plataforma2 = new Plataforma("HBO");
+ 
+        // Instaciar los usuarios registrados, dependerá de si este está o no resgitrado en DB
+        UsuarioRegistrado usuarioR1 = new UsuarioRegistrado(usuario1, login, plataforma1);
+        UsuarioRegistrado usuarioR2 = new UsuarioRegistrado(usuario2, login, plataforma2);
     }
     
 }

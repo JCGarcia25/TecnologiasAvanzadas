@@ -4,18 +4,32 @@
  */
 package tecnologias;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Estudiante_MCA
  */
-public class Empleado extends Persona {
+class Empleado extends Persona {
     
-    protected String cargo;
+    private String cargo;
+    private int tipoTrabajo;
     
     public Empleado (String nombre, int edad, int cedula, String cargo)
     {
         super(nombre, edad, cedula);
         this.cargo = cargo;
+    }
+    
+    public String proximasVacaciones()
+    {
+        // Obtén la fecha actual
+        LocalDate currentDate = LocalDate.now();
+        
+        // Agregar un mes a la fecha actual
+        LocalDate nextMonthDate = currentDate.plusMonths(6);
+        
+        return ("La siguientes vacaciones serán el: " + nextMonthDate);
     }
 
     @Override
