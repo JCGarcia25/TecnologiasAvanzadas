@@ -19,6 +19,10 @@ class DetalleVentaServicio {
         this.detalle = detalle;
         this.precio = precio;
     }
+
+    public String getDetalle() {
+        return detalle;
+    }
     
     public double aplicarDescuento()
     {

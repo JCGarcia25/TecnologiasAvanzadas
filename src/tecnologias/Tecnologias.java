@@ -17,7 +17,6 @@ public class Tecnologias {
     {
         // instanciar la conexión a base de datos
         Conexion conexion = new Conexion();
-        conexion.getConexion();
         
         // Instanciar la clase para realizar el login de los usuarios en la aplicacion
         LoginUsuarios login = new LoginUsuarios(conexion);
@@ -64,6 +63,10 @@ public class Tecnologias {
         // Instaciar los usuarios registrados, dependerá de si este está o no resgitrado en DB
         UsuarioRegistrado usuarioR1 = new UsuarioRegistrado(usuario1, login, plataforma1);
         UsuarioRegistrado usuarioR2 = new UsuarioRegistrado(usuario2, login, plataforma2);
+        
+        // Guardar factura en la base de datos
+        String respuesta = factura1.guardarFactura("123", detalleVentaServicio.getDetalle());
+        System.out.println(respuesta);
     }
     
 }
