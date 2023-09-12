@@ -18,7 +18,7 @@ class Conexion {
     private final String PUERTO = "5432";
     private final String DB = "tecnologias";
     private final String USER = "postgres";
-    private final String PASSWORD = "postgres";
+    private final String PASSWORD = "root";
     
     public Connection getConexion()
     {

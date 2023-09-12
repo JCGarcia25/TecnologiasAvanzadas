@@ -33,8 +33,7 @@ class UsuarioRegistrado {
         }
     }
     
-    public int numUsuariosRegistrados()
-    {
+    public int numUsuariosRegistrados() {
         Conexion conn = new Conexion();
         Connection conexion = conn.getConexion(); // Obtener la conexión
 
@@ -54,8 +53,9 @@ class UsuarioRegistrado {
             e.printStackTrace();
             System.err.println("Han ocurrido errores hayando el número de usuarios");
         }
+        return 0;
     }
-
+    
     @Override
     public String toString() {
         return "UsuarioRegistrado{" + "usuario=" + usuario + ", login=" + login + ", plataforma=" + plataforma + '}';

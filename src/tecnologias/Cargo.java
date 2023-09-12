@@ -23,6 +23,10 @@ class Cargo implements toStringInterface{
         this.nombre = cargo;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     @Override
     public String toString() {
         return "Cargo{" + "cargo=" + nombre + ", tiempo_de_cargo=" + tiempo_de_cargo + '}';

@@ -4,42 +4,45 @@
  */
 package tecnologias;
 
-/**
- *
- * @author Estudiante_MCA
- */
 public class Usuario {
+    private int id;
     private String usuario;
     private String contraseña;
 
-    public Usuario(String usuario, String contraseña)
-    {
+    public Usuario(int id, String usuario, String contraseña) {
+        this.id = id;
         this.usuario = usuario;
         this.contraseña = contraseña;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getUsuario() {
         return usuario;
     }
 
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
     public String getContraseña() {
         return contraseña;
     }
-    
-    public boolean cambiarContraseña(String contraseña)
-    {
-        if (!contraseña.isEmpty()) {
-            this.contraseña = contraseña;
-        
-            return true;
-        } else {
-            return false;
-        }
-        
-    }
 
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+    
+    
     @Override
     public String toString() {
-        return "Usuario{" + "usuario=" + usuario + ", contrase\u00f1a=" + contraseña + '}';
+        return "Usuario{" +
+               "id=" + id +
+               ", usuario='" + usuario + '\'' +
+               ", contraseña='" + contraseña + '\'' +
+               '}';
     }
 }
+
