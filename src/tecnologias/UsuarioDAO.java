@@ -35,8 +35,10 @@ public class UsuarioDAO {
             preparedStatement.setString(1, usuario.getUsuario());
             preparedStatement.setString(2, usuario.getContraseña());
             int filasAfectadas = preparedStatement.executeUpdate();
+            System.out.println("Usuario creado con éxito.");
             return filasAfectadas > 0;
         } catch (SQLException e) {
+            System.out.println("Error al crear el usuario.");
             e.printStackTrace();
             return false;
         }
@@ -69,8 +71,10 @@ public class UsuarioDAO {
         preparedStatement.setInt(3, idUsuario);
 
         int filasAfectadas = preparedStatement.executeUpdate();
+        System.out.println("Usuario editado con éxito.");
         return filasAfectadas > 0;
     } catch (SQLException e) {
+        System.out.println("Error al editar el usuario.");
         e.printStackTrace();
         return false;
     }
@@ -99,8 +103,10 @@ public class UsuarioDAO {
         try (PreparedStatement preparedStatement = conexion.prepareStatement(query)) {
             preparedStatement.setInt(1, id);
             int filasAfectadas = preparedStatement.executeUpdate();
+            System.out.println("Usuario eliminado con éxito.");
             return filasAfectadas > 0;
         } catch (SQLException e) {
+            System.out.println("Error al eliminar el usuario.");
             e.printStackTrace();
             return false;
         }

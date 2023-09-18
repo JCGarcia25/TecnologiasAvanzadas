@@ -9,7 +9,6 @@ package tecnologias;
  * @author johancgarcia
  */
 import java.util.Scanner;
-import java.util.List;
 
 public class Tecnologias {
 
@@ -20,49 +19,64 @@ public class Tecnologias {
     {
         // instanciar la conexión a base de datos
         UsuarioDAO usuarioDAO = new UsuarioDAO();
+        EmpresaDAO empresaDAO = new EmpresaDAO();
         Scanner scanner = new Scanner(System.in);
 
+        //USUARIOS
         // Crear un nuevo usuario con los tres argumentos requeridos
         System.out.print("Crearemos 2 usuarios ");
         Usuario nuevoUsuario = new Usuario(0, "Nelson Arango", "123");
-        boolean exitoCreacion = usuarioDAO.agregarUsuario(nuevoUsuario);
-        if (exitoCreacion) {
-            System.out.println("Usuario creado con éxito.");
-        } else {
-            System.out.println("Error al crear el usuario.");
-        }
+        usuarioDAO.agregarUsuario(nuevoUsuario);
+      
         Usuario nuevoUsuario2 = new Usuario(0, "Brayan Avila", "123");
-        boolean exitoCreacion2 = usuarioDAO.agregarUsuario(nuevoUsuario2);
-        if (exitoCreacion2) {
-            System.out.println("Usuario creado con éxito.");
-        } else {
-            System.out.println("Error al crear el usuario.");
-        }
+        usuarioDAO.agregarUsuario(nuevoUsuario2);
 
         System.out.println("Lista de todos los usuarios:");
         usuarioDAO.obtenerTodosLosUsuarios();
 
         System.out.println("Editaremos el usuario Brayan Avila");
-        boolean exitoEdicion = usuarioDAO.editarUsuario(2, "Martin Avila", "123");
-        if (exitoEdicion) {
-            System.out.println("Usuario editado con éxito.");
-        } else {
-            System.out.println("Error al editar el usuario.");
-        }
+        usuarioDAO.editarUsuario(2, "Martin Avila", "123");
 
         System.out.println("Lista de todos los usuarios:");
         usuarioDAO.obtenerTodosLosUsuarios();
 
         System.out.println("Ahora vamos a eliminar el usuario Nelson Arango");
-        boolean eliminacionExitosa = usuarioDAO.eliminarUsuario(1);
-        if (eliminacionExitosa) {
-            System.out.println("Usuario eliminado con éxito.");
-        } else {
-            System.out.println("Error al eliminar el usuario.");
-        }
+        usuarioDAO.eliminarUsuario(1);
 
         System.out.println("Lista de todos los usuarios:");
         usuarioDAO.obtenerTodosLosUsuarios();
+        
+        //EMPRESAS
+        // Crear una nueva empresa con los argumentos requeridos
+        System.out.print("Crearemos una nueva empresa ");
+        Empresa nuevaEmpresa = new Empresa(0, "BITPOINTER", "Villacentro Oficina 403", 50, 32);
+        empresaDAO.agregarEmpresa(nuevaEmpresa);
+        Empresa nuevaEmpresa2 = new Empresa(0, "IGNICION GAMES", "Primavera Urbana Oficina 807", 40, 25);
+        empresaDAO.agregarEmpresa(nuevaEmpresa2);
+
+        // Obtener y mostrar los datos de todas las empresas
+        System.out.print("Lista de todas las empresas:  ");
+        empresaDAO.obtenerTodasLasEmpresas();
+
+        // Editar los datos de una empresa
+        System.out.print("Editaremos los datos de IGNICION GAMES");
+        int empresaEditarId = 2; // Reemplaza con el ID de la empresa que deseas editar
+        empresaDAO.editarEmpresa(new Empresa(empresaEditarId, "GAMES IGNICION", "Llanocentro Local 215", 30, 25));
+        System.out.print("Lista de todas las empresas:  ");
+        empresaDAO.obtenerTodasLasEmpresas();
+
+        // Eliminar una empresa por su ID
+        System.out.print("Eliminaremos la empresa BITPOINTER  ");
+        int empresaEliminarId = 1; // Reemplaza con el ID de la empresa que deseas eliminar
+        empresaDAO.eliminarEmpresa(empresaEliminarId);
+
+        // Obtener y mostrar la lista de todas las empresas
+        System.out.println("Lista de todas las empresas:");
+        empresaDAO.obtenerTodasLasEmpresas();
+
+        // Mostramos cuando seran las proximas contrataciones de la empresa
+        String contrataciones = nuevaEmpresa2.proximasContrataciones();
+        System.out.println( contrataciones);
 
         Conexion conexion = new Conexion();
         
@@ -82,13 +96,9 @@ public class Tecnologias {
         // Generar Docente
         Docente docente = new Docente("FajarGOD", 65, 77777777);
         
-        
-
         // Instanciar cargo - Empresa
         Cargo cargo = new Cargo("Ingeniero");
-        
-        Empresa empresa = new Empresa("ignicion games");
-        
+                
         // Instanciar servicios
         Servicios servicio1 = new Servicios("programar");
         Servicios servicio2 = new Servicios("diseñar");
@@ -98,7 +108,7 @@ public class Tecnologias {
         VentaServicio ventaServicio = new VentaServicio(persona2, detalleVentaServicio, 1);
 
         // Generar Persona Cargo
-        PersonaCargo personaCargo1 = new PersonaCargo(docente, cargo, empresa);
+        PersonaCargo personaCargo1 = new PersonaCargo(docente, cargo, nuevaEmpresa2);
         
         // Generar Facturacion
         Facturacion factura1 = new Facturacion(ventaServicio, "1");
@@ -141,8 +151,15 @@ public class Tecnologias {
         // Mostramos el cargo modificado
         System.out.println( "Cargo cambiado: " + cargo.getNombre());
         
-        // Mostramos cuando seran las proximas contrataciones de la empresa
-        String contrataciones = empresa.proximasContrataciones();
-        System.out.println( contrataciones);
+        String proceso_con_acid_incorrecto = factura1.procesoConACID("Mas de veinte digitos seguramente");
+        String proceso_con_acid_correcto = factura1.procesoConACID("funcional");
+        
+        String proceso_sin_acid_incorrecto = factura1.procesoSinACID("12345", "Mas de veinte digitos seguramente");
+        String proceso_sin_acid_correcto = factura1.procesoSinACID( "54321","funcional Bien");
+
+        System.out.println("Primero: " + proceso_con_acid_incorrecto);
+        System.out.println("Segundo: " + proceso_con_acid_correcto);
+        System.out.println("Tercero: " + proceso_sin_acid_incorrecto);
+        System.out.println("Cuarto: " + proceso_sin_acid_correcto);
     }
 }
