@@ -18,7 +18,7 @@ public class UsuarioDAO {
 
     // Método para agregar un usuario a la base de datos
     public boolean agregarUsuario(Usuario usuario) {
-        String query = "INSERT INTO usuarios (usuario, contraseña) VALUES (?, ?)";
+        String query = "INSERT INTO usuarios (usuario, contrasena) VALUES (?, ?)";
         try (PreparedStatement preparedStatement = conexion.prepareStatement(query)) {
             preparedStatement.setString(1, usuario.getUsuario());
             preparedStatement.setString(2, usuario.getContraseña());
@@ -52,7 +52,7 @@ public class UsuarioDAO {
 
     // Método para actualizar un usuario existente
     public boolean editarUsuario(int idUsuario, String nuevoNombreUsuario, String nuevaContraseña) {
-    String query = "UPDATE usuarios SET usuario = ?, contraseña = ? WHERE id = ?";
+    String query = "UPDATE usuarios SET usuario = ?, contrasena = ? WHERE id = ?";
     try (PreparedStatement preparedStatement = conexion.prepareStatement(query)) {
         preparedStatement.setString(1, nuevoNombreUsuario);
         preparedStatement.setString(2, nuevaContraseña);
@@ -76,7 +76,7 @@ public class UsuarioDAO {
         while (resultSet.next()) {
             int id = resultSet.getInt("id");
             String usuario = resultSet.getString("usuario");
-            String contraseña = resultSet.getString("contraseña");
+            String contrasena = resultSet.getString("contrasena");
             
             System.out.println("ID: " + id + ", Usuario: " + usuario);
         }

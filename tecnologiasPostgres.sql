@@ -1,7 +1,7 @@
 CREATE TABLE usuarios (
     id serial PRIMARY KEY,
     usuario varchar,
-    contraseña varchar
+    contrasena varchar
 );
 
 CREATE TABLE facturas (

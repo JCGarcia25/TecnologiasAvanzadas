@@ -12,7 +12,7 @@ public class PropertiesManager {
         properties = new Properties();
         try {
             // Obtener la ruta al escritorio del usuario
-            String desktopPath = System.getProperty("user.home") + "/Escritorio";
+            String desktopPath = System.getProperty("user.home") + "/Desktop";
             // Construir la ruta completa al archivo config.properties
             String configPath = desktopPath + "/config.properties";
 
@@ -54,5 +54,10 @@ public class PropertiesManager {
     public static String getPassword()
     {
         return properties.getProperty("db.password");
+    }
+    
+    public static String getDriver()
+    {
+        return properties.getProperty("db.driver");
     }
 }

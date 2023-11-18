@@ -16,7 +16,7 @@ public class Tecnologias {
      * @param args the command line arguments
      */
     public static void main(String[] args)
-    {
+    {   
         // instanciar la conexión a base de datos
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         EmpresaDAO empresaDAO = new EmpresaDAO();
@@ -24,6 +24,7 @@ public class Tecnologias {
 
         //USUARIOS
         // Crear un nuevo usuario con los tres argumentos requeridos
+        
         System.out.print("Crearemos 2 usuarios ");
         Usuario nuevoUsuario = new Usuario(0, "Nelson Arango", "123");
         usuarioDAO.agregarUsuario(nuevoUsuario);

@@ -13,8 +13,9 @@ class Conexion {
     {
         // Si la conexión aún no existe o está cerrada, crea una nueva
         if (connection == null) {
+            JOptionPane.showMessageDialog(null, "Creando nueva conexion");
             try {
-                Class.forName("org." + PropertiesManager.getConection() + ".Driver");
+                Class.forName(PropertiesManager.getDriver());
                 String url = getUrl();
                 connection = DriverManager.getConnection(url, PropertiesManager.getUsername(), PropertiesManager.getPassword());
             } catch (Exception e) {
@@ -39,3 +40,5 @@ class Conexion {
        return "jdbc:" + PropertiesManager.getConection() + "://"+ PropertiesManager.getHost() +":"+ PropertiesManager.getPort()+"/"+ PropertiesManager.getDatabase(); 
     }
 }
+
+
