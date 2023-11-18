@@ -20,16 +20,19 @@ class Facturacion {
     private VentaServicio ventaServicio;
     private String codigo_factura;
     private String fecha = LocalDate.now().toString();
+    
+    private Connection conexion;
 
     public Facturacion(VentaServicio ventaServicio, String codigo_factura) {
         this.ventaServicio = ventaServicio;
         this.codigo_factura = codigo_factura;
+        
+        conexion = Conexion.getInstance().getConexion();
     }
     
     public String guardarFactura(String codigo_factura, String detalles) {
 
-        Conexion conn = new Conexion();
-        Connection conexion = conn.getConexion();
+
         String consulta = "INSERT INTO facturas (codigo_factura, detalles, fecha) VALUES (?, ?, ?)";
 
         try {
@@ -65,8 +68,7 @@ class Facturacion {
     }
     
     public String procesoConACID(String detalle) {
-        Conexion conn = new Conexion();
-        Connection conexion = conn.getConexion();
+
         String resultado = "";
 
         try {
@@ -116,8 +118,7 @@ class Facturacion {
     }
     
     public String procesoSinACID(String codigo_factura, String detalle) {
-        Conexion conn = new Conexion();
-        Connection conexion = conn.getConexion();
+
         String resultado = "";
 
         try {

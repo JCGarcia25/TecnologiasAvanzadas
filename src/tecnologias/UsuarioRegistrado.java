@@ -18,8 +18,13 @@ class UsuarioRegistrado {
     private Usuario usuario;
     private LoginUsuarios login;
     private Plataforma plataforma;
+    
+    private Connection conexion;
 
     public UsuarioRegistrado(Usuario usuario, LoginUsuarios login, Plataforma plataforma) {
+        
+        conexion = Conexion.getInstance().getConexion();
+        
         this.login = login;
         
         // Verificar si el usuario está registrado en la base de datos
@@ -34,8 +39,6 @@ class UsuarioRegistrado {
     }
     
     public int numUsuariosRegistrados() {
-        Conexion conn = new Conexion();
-        Connection conexion = conn.getConexion(); // Obtener la conexión
 
         String consulta = "SELECT COUNT(*) FROM usuarios";
 
