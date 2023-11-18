@@ -1,16 +1,5 @@
 package tecnologias;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author Pyke
- */
-
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,8 +13,7 @@ public class UsuarioDAO {
 
     // Constructor para inicializar la conexión
     public UsuarioDAO() {
-        Conexion conexionDB = new Conexion();
-        conexion = conexionDB.getConexion();
+        conexion = Conexion.getInstance().getConexion();
     }
 
     // Método para agregar un usuario a la base de datos

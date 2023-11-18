@@ -48,7 +48,7 @@ public class Tecnologias {
         
         //EMPRESAS
         // Crear una nueva empresa con los argumentos requeridos
-        System.out.print("Crearemos una nueva empresa ");
+        /*System.out.print("Crearemos una nueva empresa ");
         Empresa nuevaEmpresa = new Empresa(0, "BITPOINTER", "Villacentro Oficina 403", 50, 32);
         empresaDAO.agregarEmpresa(nuevaEmpresa);
         Empresa nuevaEmpresa2 = new Empresa(0, "IGNICION GAMES", "Primavera Urbana Oficina 807", 40, 25);
@@ -78,7 +78,7 @@ public class Tecnologias {
         String contrataciones = nuevaEmpresa2.proximasContrataciones();
         System.out.println( contrataciones);
 
-        Conexion conexion = new Conexion();
+        Conexion conexion = Conexion.getInstance();
         
         // Instanciar la clase para realizar el login de los usuarios en la aplicacion
         LoginUsuarios login = new LoginUsuarios(conexion);
@@ -160,6 +160,6 @@ public class Tecnologias {
         System.out.println("Primero: " + proceso_con_acid_incorrecto);
         System.out.println("Segundo: " + proceso_con_acid_correcto);
         System.out.println("Tercero: " + proceso_sin_acid_incorrecto);
-        System.out.println("Cuarto: " + proceso_sin_acid_correcto);
+        System.out.println("Cuarto: " + proceso_sin_acid_correcto);*/
     }
 }

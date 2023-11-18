@@ -1,38 +1,41 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package tecnologias;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author johancgarcia
- */
 class Conexion {
     
-    private final String HOST = "localhost";
-    private final String PUERTO = "5432";
-    private final String DB = "tecnologias";
-    private final String USER = "postgres";
-    private final String PASSWORD = "root";
-    
-    public Connection getConexion()
+    private static volatile Conexion instance;
+    private Connection connection;
+
+    private Conexion()
     {
-        Connection conexion = null;
-        
-        try {
-            Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://"+HOST+":"+PUERTO+"/"+DB;
-            conexion = DriverManager.getConnection(url, USER, PASSWORD);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+        // Si la conexión aún no existe o está cerrada, crea una nueva
+        if (connection == null) {
+            try {
+                Class.forName("org." + PropertiesManager.getConection() + ".Driver");
+                String url = getUrl();
+                connection = DriverManager.getConnection(url, PropertiesManager.getUsername(), PropertiesManager.getPassword());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
         }
-        
-        return conexion;
     }
     
+    public Connection getConexion() {
+        return connection;
+    }
+    
+    public static synchronized Conexion getInstance() {
+        if (instance == null) { // Bloqueo doble para la seguridad de los hilos
+            instance = new Conexion(); // Crea la instancia si no existe
+        }
+        return instance;
+    }
+    
+    private String getUrl()
+    {
+       return "jdbc:" + PropertiesManager.getConection() + "://"+ PropertiesManager.getHost() +":"+ PropertiesManager.getPort()+"/"+ PropertiesManager.getDatabase(); 
+    }
 }
