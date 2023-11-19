@@ -14,8 +14,9 @@ class Docente extends Persona{
     private float salario;
     private String[] estudiantes = {"10", "15", "20"};
 
-    public Docente(String nombre, int edad, int cedula) {
+    public Docente(String nombre, int edad, int cedula, float  salario) {
         super(nombre, edad, cedula);
+        this.salario = salario;
     }
 
     public float getSalario() {

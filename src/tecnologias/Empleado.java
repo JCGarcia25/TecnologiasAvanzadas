@@ -12,13 +12,14 @@ import java.time.LocalDate;
  */
 class Empleado extends Persona {
     
-    private String cargo;
-    private int tipoTrabajo;
+    private float salario;
+    private Cargo cargo;
     
-    public Empleado (String nombre, int edad, int cedula, String cargo)
+    public Empleado (String nombre, int edad, int telefono, Cargo cargo, float salario)
     {
-        super(nombre, edad, cedula);
+        super(nombre, edad, telefono);
         this.cargo = cargo;
+        this.salario = salario;
     }
     
     public String proximasVacaciones()
@@ -34,6 +35,6 @@ class Empleado extends Persona {
 
     @Override
     public String toString() {
-        return super.toString() + "Empleado{" + "cargo=" + cargo + '}';
+        return "Empleado{" + "salario=" + salario + ", cargo=" + cargo + '}';
     }
 }

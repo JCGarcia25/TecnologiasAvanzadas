@@ -12,7 +12,7 @@ public class PropertiesManager {
         properties = new Properties();
         try {
             // Obtener la ruta al escritorio del usuario
-            String desktopPath = System.getProperty("user.home") + "/Desktop";
+            String desktopPath = System.getProperty("user.home") + "/Escritorio";
             // Construir la ruta completa al archivo config.properties
             String configPath = desktopPath + "/config.properties";
 

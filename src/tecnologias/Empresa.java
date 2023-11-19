@@ -10,45 +10,21 @@ import java.time.LocalDate;
  *
  * @author Estudiante_MCA
  */
-class Empresa implements toStringInterface{
+class Empresa {
         
-    private int id;
     private String nombre;
     private String direccion;
-    private int max_empleados;
-    private int actual_empleados;
+    private int maxEmpleados;
+    private int actualEmpleados;
     
 
-    public Empresa(int id, String nombre, String direccion, int max_empleados, int actual_empleados) {
-        this.id = id;
+    public Empresa(String nombre, String direccion, int maxEmpleados, int actualEmpleados) {
         this.nombre = nombre;
         this.direccion = direccion;
-        this.max_empleados = max_empleados;
-        this.actual_empleados = actual_empleados;    
+        this.maxEmpleados = maxEmpleados;
+        this.actualEmpleados = actualEmpleados;    
     }
     
-    public void actualizarDatos(String direccion, int max_empleados, int actual_empleados)
-    {
-       this.direccion = direccion;
-       this.max_empleados = max_empleados;
-       this.actual_empleados = actual_empleados;
-    }
-    
-    public String proximasContrataciones()
-    {
-        // Obtén la fecha actual
-        LocalDate currentDate = LocalDate.now();
-        
-        // Agregar un mes a la fecha actual
-        LocalDate nextMonthDate = currentDate.plusMonths(1);
-        
-        return ("En GAMES IGNICION La sigueinte fecha de contratación es: " + nextMonthDate);
-    }
-    
-    public int getId() {
-        return id;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -66,29 +42,34 @@ class Empresa implements toStringInterface{
     }
 
     public int getMaxEmpleados() {
-        return max_empleados;
+        return maxEmpleados;
     }
 
     public void setMaxEmpleados(int max_empleados) {
-        this.max_empleados = max_empleados;
+        this.maxEmpleados = max_empleados;
     }
 
     public int getActualEmpleados() {
-        return actual_empleados;
+        return actualEmpleados;
     }
 
     public void setActualEmpleados(int actual_empleados) {
-        this.actual_empleados = actual_empleados;
+        this.actualEmpleados = actual_empleados;
+    }
+    
+    public String proximasContrataciones()
+    {
+        // Obtén la fecha actual
+        LocalDate currentDate = LocalDate.now();
+        
+        // Agregar un mes a la fecha actual
+        LocalDate nextMonthDate = currentDate.plusMonths(1);
+        
+        return ("En GAMES IGNICION La sigueinte fecha de contratación es: " + nextMonthDate);
     }
 
     @Override
     public String toString() {
-        return "Empresa{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", maxEmpleados=" + max_empleados +
-                ", actualEmpleados=" + actual_empleados +
-                '}';
+        return "Empresa{" + "nombre=" + nombre + ", direccion=" + direccion + ", maxEmpleados=" + maxEmpleados + ", actualEmpleados=" + actualEmpleados + '}';
     }
 }

@@ -1,17 +1,10 @@
 package tecnologias;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-class EmpresaDAO {
-
-    private Connection conexion;
-
-    public EmpresaDAO() {
-        conexion = Conexion.getInstance().getConexion();
-    }
+class EmpresaDAO extends BaseConexion {
 
     public boolean agregarEmpresa(Empresa empresa) {
         String query = "INSERT INTO empresas (nombre, direccion, max_empleados, actual_empleados) VALUES (?, ?, ?, ?)";
@@ -30,8 +23,8 @@ class EmpresaDAO {
         }
     }
 
-    public Empresa obtenerTodasLasEmpresas() {
-    String query = "SELECT * FROM empresas";
+    public void obtenerTodasLasEmpresas() {
+        String query = "SELECT * FROM empresas";
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
             ResultSet resultSet = statement.executeQuery();
             
@@ -50,17 +43,16 @@ class EmpresaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
     }
 
-    public boolean editarEmpresa(Empresa empresa) {
+    public boolean editarEmpresa(int idempresa, Empresa empresa) {
         String query = "UPDATE empresas SET nombre = ?, direccion = ?, max_empleados = ?, actual_empleados = ? WHERE id = ?";
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setString(1, empresa.getNombre());
             statement.setString(2, empresa.getDireccion());
             statement.setInt(3, empresa.getMaxEmpleados());
             statement.setInt(4, empresa.getActualEmpleados());
-            statement.setInt(5, empresa.getId());
+            statement.setInt(5, idempresa);
             int rowsUpdated = statement.executeUpdate();
             System.out.println("Empresa editada con éxito.");
             return rowsUpdated > 0;

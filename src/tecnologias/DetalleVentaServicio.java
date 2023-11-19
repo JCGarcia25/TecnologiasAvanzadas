@@ -10,12 +10,12 @@ package tecnologias;
  */
 class DetalleVentaServicio {
     
-    private Servicios servicios;
+    private Servicio servicio;
     private String detalle;
     private float precio;
 
-    public DetalleVentaServicio(Servicios servicios, String detalle, float precio) {
-        this.servicios = servicios;
+    public DetalleVentaServicio(Servicio servicio, String detalle, float precio) {
+        this.servicio = servicio;
         this.detalle = detalle;
         this.precio = precio;
     }
@@ -31,6 +31,6 @@ class DetalleVentaServicio {
 
     @Override
     public String toString() {
-        return "DetalleVentaServicio{" + "servicios=" + servicios + ", detalle=" + detalle + '}';
+        return "DetalleVentaServicio{" + "servicio=" + servicio + ", detalle=" + detalle + ", precio=" + precio + '}';
     }
 }

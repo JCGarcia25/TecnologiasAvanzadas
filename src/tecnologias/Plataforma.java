@@ -11,14 +11,16 @@ package tecnologias;
 public class Plataforma {
     
     private String plataforma;
+    private String link;
 
-    public Plataforma(String plataforma)
+    public Plataforma(String plataforma, String link)
     {
         this.plataforma = plataforma;
+        this.link = link;
     }
 
     @Override
     public String toString() {
-        return "Plataforma{" + "plataforma=" + plataforma + '}';
+        return "Plataforma{" + "plataforma=" + plataforma + ", link=" + link + '}';
     }
 }

@@ -21,6 +21,20 @@ class VentaServicio {
         this.numero_venta = numero_venta;
     }
 
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public DetalleVentaServicio getDetalleVentaServicio() {
+        return detalleVentaServicio;
+    }
+
+    public int getNumero_venta() {
+        return numero_venta;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "VentaServicio{" + "persona=" + persona + ", detalleVentaServicio=" + detalleVentaServicio + ", numero_venta=" + numero_venta + '}';

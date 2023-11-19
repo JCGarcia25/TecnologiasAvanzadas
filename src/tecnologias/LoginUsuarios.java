@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
  */
 class LoginUsuarios {
     
-    private Conexion conexion; // Conexión a la base de datos
+    private Connection conexion; // Conexión a la base de datos
     private String usuario;
     private String contraseña;
 
-    public LoginUsuarios(Conexion conexion) {
-        this.conexion = conexion;
+    public LoginUsuarios() {
+        conexion = Conexion.getInstance().getConexion();
     }
 
     // Método para verificar las credenciales de inicio de sesión
@@ -29,8 +29,7 @@ class LoginUsuarios {
         
         String consulta = "SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?";
         try {
-            Connection conn = this.conexion.getConexion(); // Obtener la conexión de la instancia de Conexion
-            PreparedStatement ps = conn.prepareStatement(consulta);
+            PreparedStatement ps = conexion.prepareStatement(consulta);
             ps.setString(1, usuario);
             ps.setString(2, contraseña);
             ResultSet rs = ps.executeQuery();
@@ -41,8 +40,6 @@ class LoginUsuarios {
             return false; // En caso de error, devuelve false
         }
     }
-    
-    
 
     @Override
     public String toString() {

@@ -26,10 +26,10 @@ public class Tecnologias {
         // Crear un nuevo usuario con los tres argumentos requeridos
         
         System.out.print("Crearemos 2 usuarios ");
-        Usuario nuevoUsuario = new Usuario(0, "Nelson Arango", "123");
+        Usuario nuevoUsuario = new Usuario("Nelson Arango", "123");
         usuarioDAO.agregarUsuario(nuevoUsuario);
       
-        Usuario nuevoUsuario2 = new Usuario(0, "Brayan Avila", "123");
+        Usuario nuevoUsuario2 = new Usuario("Brayan Avila", "123");
         usuarioDAO.agregarUsuario(nuevoUsuario2);
 
         System.out.println("Lista de todos los usuarios:");

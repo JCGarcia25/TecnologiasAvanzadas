@@ -1,35 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package tecnologias;
 
-/**
- *
- * @author Estudiante_MCA
- */
-class Persona implements toStringInterface {
+
+class Persona {
     
     protected String nombre;
     protected int edad;
-    protected int cedula;
+    protected int telefono;
 
     public Persona () 
     {
         this.nombre = "Default";
         this.edad = 10;
-        this.cedula = 41240901;
+        this.telefono = 41240901;
     }
 
-    public Persona (String nombre, int edad, int cedula)
+    public Persona (String nombre, int edad, int telefono)
     {
         this.nombre = nombre;
         this.edad = edad;
-        this.cedula = cedula;
+        this.telefono = telefono;
     }
 
     @Override
     public String toString() {
-        return "Persona{" + "nombre=" + nombre + ", edad=" + edad + ", cedula=" + cedula + '}';
+        return "Persona{" + "nombre=" + nombre + ", edad=" + edad + ", telefono=" + telefono + '}';
     }
 }

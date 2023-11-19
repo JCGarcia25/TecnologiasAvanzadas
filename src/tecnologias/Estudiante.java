@@ -14,12 +14,12 @@ class Estudiante extends Persona{
     private String programa;
     private String[] materias = {"matematicas", "programacion", "algoritmia"};
     private String[] notas = {"4", "3", "5"};
-    private String[] total;
     
-    public Estudiante(String nombre, int edad, int cedula, String institucion)
+    public Estudiante(String nombre, int edad, int cedula, String institucion, String programa)
     {
         super(nombre, edad, cedula);
         this.institucion = institucion;
+        this.programa = programa;
     }
     
     public String notasPorMateria()
@@ -37,14 +37,9 @@ class Estudiante extends Persona{
         
         return resultado;
     }
-    
-    public String getInstitucion()
-    {
-        return this.institucion;
-    }
 
     @Override
     public String toString() {
-        return super.toString() + "Estudiante{" + "institucion=" + institucion + '}';
+        return "Estudiante{" + "institucion=" + institucion + ", programa=" + programa + ", materias=" + materias + ", notas=" + notas + '}';
     }
 }

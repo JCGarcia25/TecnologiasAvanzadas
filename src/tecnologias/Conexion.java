@@ -19,7 +19,9 @@ class Conexion {
                 String url = getUrl();
                 connection = DriverManager.getConnection(url, PropertiesManager.getUsername(), PropertiesManager.getPassword());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                e.printStackTrace();
+                
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
             }
         }
     }

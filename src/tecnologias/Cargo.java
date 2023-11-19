@@ -8,18 +8,12 @@ package tecnologias;
  *
  * @author Estudiante_MCA
  */
-class Cargo implements toStringInterface{
+class Cargo {
     
     private String nombre;
-    private int tiempo_de_cargo = 0;
+    private int tiempoCargo = 0;
 
     public Cargo( String cargo) {
-        this.nombre = cargo;
-    }
-    
-    public void cambiarCargo(String cargo)
-    {
-        this.tiempo_de_cargo = 0;
         this.nombre = cargo;
     }
 
@@ -27,8 +21,12 @@ class Cargo implements toStringInterface{
         return nombre;
     }
 
+    public void setTiempo_de_cargo(int tiempoCargo) {
+        this.tiempoCargo = tiempoCargo;
+    }
+
     @Override
     public String toString() {
-        return "Cargo{" + "cargo=" + nombre + ", tiempo_de_cargo=" + tiempo_de_cargo + '}';
+        return "Cargo{" + "cargo=" + nombre + ", tiempoCargo=" + tiempoCargo + '}';
     }
 }

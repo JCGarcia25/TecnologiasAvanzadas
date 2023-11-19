@@ -8,7 +8,7 @@ package tecnologias;
  *
  * @author Estudiante_MCA
  */
-class PersonaCargo implements toStringInterface{
+class PersonaCargo{
     
     public Cargo cargo;
     public Persona persona;
@@ -19,6 +19,11 @@ class PersonaCargo implements toStringInterface{
         this.persona = persona;
         this.cargo = cargo;
         this.empresa = empresa;
+    }
+    
+    public void cambiarCargo(Cargo cargo)
+    {
+        this.cargo = cargo;
     }
 
     @Override
