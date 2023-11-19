@@ -22,7 +22,6 @@ public class PropertiesManager {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            // Manejar la excepción apropiadamente
         }
     }
     

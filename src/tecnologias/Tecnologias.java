@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package tecnologias;
 
 /**
@@ -12,13 +8,17 @@ import java.util.Scanner;
 
 public class Tecnologias {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args)
     {   
+        Helper helper = new Helper();
+        
+        String hora = helper.obtenerHora();
+        String fecha = helper.obtenerFecha();
+        
+        System.out.println(hora);
+        System.out.println(fecha);
         // instanciar la conexión a base de datos
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        /*UsuarioDAO usuarioDAO = new UsuarioDAO();
         EmpresaDAO empresaDAO = new EmpresaDAO();
         Scanner scanner = new Scanner(System.in);
 
@@ -45,7 +45,7 @@ public class Tecnologias {
         usuarioDAO.eliminarUsuario(1);
 
         System.out.println("Lista de todos los usuarios:");
-        usuarioDAO.obtenerTodosLosUsuarios();
+        usuarioDAO.obtenerTodosLosUsuarios();*/
         
         //EMPRESAS
         // Crear una nueva empresa con los argumentos requeridos
