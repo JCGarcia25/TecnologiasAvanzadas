@@ -5,31 +5,24 @@ public class Helper{
     
     private IHelper ihelper;
     
-    public String obtenerHora() {
-
+    public Helper() {
         switch (PropertiesManager.getConection()) {
             case "postgresql":
                 ihelper = new HelperPostgresql();
-                return ihelper.obtenerHora();
+                break;
             case "mysql":
                 ihelper = new HelperMysql();
-                return ihelper.obtenerHora();
+                break;
             default:
                 throw new AssertionError();
         }
     }
     
+    public String obtenerHora() {
+        return ihelper.obtenerHora();
+    }
+    
     public String obtenerFecha() {
-
-        switch (PropertiesManager.getConection()) {
-            case "postgresql":
-                ihelper = new HelperPostgresql();
-                return ihelper.obtenerFecha();
-            case "mysql":
-                ihelper = new HelperMysql();
-                return ihelper.obtenerFecha();
-            default:
-                throw new AssertionError();
-        }
+        return ihelper.obtenerFecha();
     }
 }
