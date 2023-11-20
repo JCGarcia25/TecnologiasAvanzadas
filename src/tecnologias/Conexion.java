@@ -1,33 +1,36 @@
 package tecnologias;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
 class Conexion {
     
     private static volatile Conexion instance;
-    private Connection connection;
+    
+    private IConexion iConexion;
 
     private Conexion()
     {
-        // Si la conexión aún no existe o está cerrada, crea una nueva
-        if (connection == null) {
-            JOptionPane.showMessageDialog(null, "Creando nueva conexion");
-            try {
-                Class.forName(PropertiesManager.getDriver());
-                String url = getUrl();
-                connection = DriverManager.getConnection(url, PropertiesManager.getUsername(), PropertiesManager.getPassword());
-            } catch (Exception e) {
-                e.printStackTrace();
-                
-                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        try {
+            switch (PropertiesManager.getConection()) {
+                case "postgresql":
+                    iConexion = ConexionPostgresql.getInstance();
+                    break;
+                case "mysql":
+                    iConexion = ConexionMysql.getInstance();
+                    break;
+                default:
+                    throw new AssertionError();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }
     
     public Connection getConexion() {
-        return connection;
+        return iConexion.getConexion();
     }
     
     public static synchronized Conexion getInstance() {
@@ -35,11 +38,6 @@ class Conexion {
             instance = new Conexion(); // Crea la instancia si no existe
         }
         return instance;
-    }
-    
-    private String getUrl()
-    {
-       return "jdbc:" + PropertiesManager.getConection() + "://"+ PropertiesManager.getHost() +":"+ PropertiesManager.getPort()+"/"+ PropertiesManager.getDatabase(); 
     }
 }
 
