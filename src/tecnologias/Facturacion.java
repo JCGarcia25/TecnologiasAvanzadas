@@ -11,6 +11,7 @@ class Facturacion {
     private VentaServicio ventaServicio;
     private String getCodigoFactura;
     private String fecha = LocalDate.now().toString();
+    private int id;
 
     public Facturacion(VentaServicio ventaServicio, String getCodigoFactura) {
         this.ventaServicio = ventaServicio;
@@ -29,6 +30,14 @@ class Facturacion {
         return fecha;
     }
 
+    public int getId() {
+    return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     @Override
     public String toString() {
         return "Facturacion{" + "ventaServicio=" + ventaServicio + ", getCodigoFactura=" + getCodigoFactura + ", fecha=" + fecha + '}';

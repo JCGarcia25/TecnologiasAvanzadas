@@ -1,34 +1,39 @@
 CREATE TABLE usuarios (
-    id serial PRIMARY KEY,
-    usuario varchar,
-    contrasena varchar
+    id SERIAL PRIMARY KEY,
+    usuario VARCHAR(255),
+    contrasena VARCHAR(255)
 );
 
 CREATE TABLE facturas (
-    id serial PRIMARY KEY,
-    codigo_factura varchar,
-    detalles varchar(20),
-    fecha varchar
+    id SERIAL PRIMARY KEY,
+    codigo_factura VARCHAR(255),
+    detalles VARCHAR(20),
+    fecha VARCHAR(255)
 );
 
 CREATE TABLE empresas (
-    id serial PRIMARY KEY,
-    nombre varchar,
-    direccion varchar,
-    max_empleados int,
-    actual_empleados int,
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(255),
+    direccion VARCHAR(255),
+    max_empleados INT,
+    actual_empleados INT
 );
 
 CREATE TABLE vitrina (
-    id serial PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     valor FLOAT,
-    nombre varchar,
-    cantidad int
+    nombre VARCHAR(255),
+    cantidad INT
 );
 
 CREATE TABLE bodega (
-    id serial PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     valor FLOAT,
-    nombre varchar,
-    cantidad int
+    nombre VARCHAR(255),
+    cantidad INT
+);
+
+CREATE TABLE servicios (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(255)
 );

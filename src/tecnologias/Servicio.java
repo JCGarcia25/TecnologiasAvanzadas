@@ -7,6 +7,7 @@ package tecnologias;
 class Servicio {
     
     private String nombre;
+    private int id;
 
     public Servicio(String nombre) 
     {
@@ -16,6 +17,18 @@ class Servicio {
     public void cancelarServicio(Servicio servicio)
     {
         servicio = null;
+    }
+    
+    public int getId() {
+        return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     @Override

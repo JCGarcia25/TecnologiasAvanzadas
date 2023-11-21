@@ -11,6 +11,7 @@ public class Tecnologias {
 
     public static void main(String[] args)
     {   
+        
         Helper helper = new Helper();
         
         String hora = helper.obtenerHora();
@@ -20,8 +21,11 @@ public class Tecnologias {
         System.out.println(fecha);
         
         ProductoDAO productoDAO = new ProductoDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        EmpresaDAO empresaDAO = new EmpresaDAO();
+        ServicioDAO servicioDAO = new ServicioDAO();
         
-        /*Producto productoAVitrina = new Producto("producto A", 1000, "vitrina", 10);
+        Producto productoAVitrina = new Producto("producto A", 1000, "vitrina", 10);
         Producto productoBVitrina = new Producto("producto B", 500, "vitrina", 5);
         Producto productoCVitrina = new Producto("producto C", 800, "vitrina", 8);
         
@@ -34,7 +38,7 @@ public class Tecnologias {
         productoDAO.agregarProducto(productoCVitrina);
         productoDAO.agregarProducto(productoABodega);
         productoDAO.agregarProducto(productoCBodega);
-        productoDAO.agregarProducto(productoDBodega);*/
+        productoDAO.agregarProducto(productoDBodega);
         
         List<String> union = helper.totalProductos();
         System.out.println(union);
@@ -47,14 +51,6 @@ public class Tecnologias {
         
         List<String> diferenciaBodegaAVitrina = helper.diferenciaBodegaAVitrina();
         System.out.println(diferenciaBodegaAVitrina);
-        
-        // instanciar la conexión a base de datos
-        /*UsuarioDAO usuarioDAO = new UsuarioDAO();
-        EmpresaDAO empresaDAO = new EmpresaDAO();
-        Scanner scanner = new Scanner(System.in);
-
-        //USUARIOS
-        // Crear un nuevo usuario con los tres argumentos requeridos
         
         System.out.print("Crearemos 2 usuarios ");
         Usuario nuevoUsuario = new Usuario("Nelson Arango", "123");
@@ -76,14 +72,34 @@ public class Tecnologias {
         usuarioDAO.eliminarUsuario(1);
 
         System.out.println("Lista de todos los usuarios:");
-        usuarioDAO.obtenerTodosLosUsuarios();*/
+        usuarioDAO.obtenerTodosLosUsuarios();
+
+        //USUARIOS
+        // Crear un nuevo usuario con los tres argumentos requeridos
+        
+        System.out.print("Crearemos 2 usuarios ");
+
+        System.out.println("Lista de todos los usuarios:");
+        usuarioDAO.obtenerTodosLosUsuarios();
+
+        System.out.println("Editaremos el usuario Brayan Avila");
+        usuarioDAO.editarUsuario(2, "Martin Avila", "123");
+
+        System.out.println("Lista de todos los usuarios:");
+        usuarioDAO.obtenerTodosLosUsuarios();
+
+        System.out.println("Ahora vamos a eliminar el usuario Nelson Arango");
+        usuarioDAO.eliminarUsuario(1);
+
+        System.out.println("Lista de todos los usuarios:");
+        usuarioDAO.obtenerTodosLosUsuarios();
         
         //EMPRESAS
         // Crear una nueva empresa con los argumentos requeridos
-        /*System.out.print("Crearemos una nueva empresa ");
-        Empresa nuevaEmpresa = new Empresa(0, "BITPOINTER", "Villacentro Oficina 403", 50, 32);
+        System.out.print("Crearemos una nueva empresa ");
+        Empresa nuevaEmpresa = new Empresa("BITPOINTER", "Villacentro Oficina 403", 50, 32);
         empresaDAO.agregarEmpresa(nuevaEmpresa);
-        Empresa nuevaEmpresa2 = new Empresa(0, "IGNICION GAMES", "Primavera Urbana Oficina 807", 40, 25);
+        Empresa nuevaEmpresa2 = new Empresa("IGNICION GAMES", "Primavera Urbana Oficina 807", 40, 25);
         empresaDAO.agregarEmpresa(nuevaEmpresa2);
 
         // Obtener y mostrar los datos de todas las empresas
@@ -92,8 +108,10 @@ public class Tecnologias {
 
         // Editar los datos de una empresa
         System.out.print("Editaremos los datos de IGNICION GAMES");
-        int empresaEditarId = 2; // Reemplaza con el ID de la empresa que deseas editar
-        empresaDAO.editarEmpresa(new Empresa(empresaEditarId, "GAMES IGNICION", "Llanocentro Local 215", 30, 25));
+        int empresaEditarId = 2;
+
+        Empresa empresaNew = new Empresa("GAMES IGNICION", "Llanocentro Local 215", 30, 25);
+        empresaDAO.editarEmpresa(empresaEditarId,empresaNew);
         System.out.print("Lista de todas las empresas:  ");
         empresaDAO.obtenerTodasLasEmpresas();
 
@@ -109,31 +127,27 @@ public class Tecnologias {
         // Mostramos cuando seran las proximas contrataciones de la empresa
         String contrataciones = nuevaEmpresa2.proximasContrataciones();
         System.out.println( contrataciones);
-
-        Conexion conexion = Conexion.getInstance();
         
-        // Instanciar la clase para realizar el login de los usuarios en la aplicacion
-        LoginUsuarios login = new LoginUsuarios(conexion);
-
         // Generar personas
         Persona persona1 = new Persona("johan", 21, 1006700371);
         Persona persona2 = new Persona();
         
         // Generar Estudiante - Empleado - Docente
-        Estudiante estudiante = new Estudiante("Nelson", 23, 1121967543, "Unillanos");
+        Estudiante estudiante = new Estudiante("Nelson", 23, 1121967543, "Unillanos", "Ing. Sistemas");
         
         // Generar Empleado
-        Empleado empleado = new Empleado("Daniel", 20, 1002735678, "TL");
+        Cargo cargo = new Cargo("Programador");
+        Empleado empleado = new Empleado("Daniel", 20, 4543,cargo, 3);
         
         // Generar Docente
-        Docente docente = new Docente("FajarGOD", 65, 77777777);
+        Docente docente = new Docente("FajarGOD", 65, 12321, 5000);
         
         // Instanciar cargo - Empresa
-        Cargo cargo = new Cargo("Ingeniero");
+        Cargo cargo2 = new Cargo("Ingeniero");
                 
         // Instanciar servicios
-        Servicios servicio1 = new Servicios("programar");
-        Servicios servicio2 = new Servicios("diseñar");
+        Servicio servicio1 = new Servicio("programar");
+        Servicio servicio2 = new Servicio("diseñar");
         
         DetalleVentaServicio detalleVentaServicio = new DetalleVentaServicio(servicio1, "se hizo la chamba", 10000);
         
@@ -144,19 +158,12 @@ public class Tecnologias {
         
         // Generar Facturacion
         Facturacion factura1 = new Facturacion(ventaServicio, "1");
-        
-        // Parte derecha LOGIN
-        Usuario usuario1 = new Usuario(0,"johan", "johan");
-        Usuario usuario2 = new Usuario(0,"esneyder", "caicedo");
+        FacturacionDAO facturacionDAO = new FacturacionDAO();
         
         // Instanciar plataformas
-        Plataforma plataforma1 = new Plataforma("Netflix");
-        Plataforma plataforma2 = new Plataforma("HBO");
+        Plataforma plataforma1 = new Plataforma("Netflix", "Netflix.com");
+        Plataforma plataforma2 = new Plataforma("HBO", "HBO.com");
  
-        // Instaciar los usuarios registrados, dependerá de si este está o no resgitrado en DB
-        UsuarioRegistrado usuarioR1 = new UsuarioRegistrado(usuario1, login, plataforma1);
-        UsuarioRegistrado usuarioR2 = new UsuarioRegistrado(usuario2, login, plataforma2);
-        
         // Generamos cuantos estudiantes estan registrados por materia
         String estudiantesMaterias = docente.estudiantesPorMateria();
         System.out.println(estudiantesMaterias);
@@ -166,23 +173,37 @@ public class Tecnologias {
         System.out.println(notasPorMateria);
         
         // Guardar factura en la base de datos
-        String respuesta = factura1.guardarFactura("123", detalleVentaServicio.getDetalle());
+        boolean respuesta = facturacionDAO.guardarFactura(factura1);
         System.out.println(respuesta);
+                
+        //Obtenemos todas las facturas
+        facturacionDAO.obtenerTodasLasFacturas();
         
-        // Aplicamos el descuento en la factura
-        Double detalleServicio = detalleVentaServicio.aplicarDescuento();
-        System.out.println("Con el descuento quedaria en: $" + detalleServicio);
+        //Editamos una factura
+        int facturacionEditarID = 1;
+        facturacionDAO.editarFactura(facturacionEditarID, factura1);
         
-        // Generamos la fecha de las proximas vacaciones del empleado
-        String vacaciones = empleado.proximasVacaciones();
-        System.out.println( vacaciones);
+        //Eliminamos una factura
+        facturacionDAO.eliminarFactura(empresaEditarId);
         
-        // Mostramos el cargo actual para luego modificarlo
-        System.out.println( "Cargo Actual: " + cargo.getNombre());
-        cargo.cambiarCargo("Arquitecto");
-        // Mostramos el cargo modificado
-        System.out.println( "Cargo cambiado: " + cargo.getNombre());
-        
+        // Ejemplo de agregar un servicio
+        Servicio nuevoServicio = new Servicio("Capacitaciones");
+        boolean exito = servicioDAO.agregarServicio(nuevoServicio);
+
+        if (exito) {
+            System.out.println("Servicio agregado con éxito.");
+        } else {
+            System.out.println("Error al agregar el servicio.");
+        }
+
+        // Ejemplo de obtener todos los servicios
+        servicioDAO.obtenerTodosLosServicios();
+
+        //Editamos un servicio
+        int servicioEditarId = 4;
+        servicioDAO.eliminarServicio(servicioEditarId);
+       
+        /*
         String proceso_con_acid_incorrecto = factura1.procesoConACID("Mas de veinte digitos seguramente");
         String proceso_con_acid_correcto = factura1.procesoConACID("funcional");
         
@@ -192,6 +213,7 @@ public class Tecnologias {
         System.out.println("Primero: " + proceso_con_acid_incorrecto);
         System.out.println("Segundo: " + proceso_con_acid_correcto);
         System.out.println("Tercero: " + proceso_sin_acid_incorrecto);
-        System.out.println("Cuarto: " + proceso_sin_acid_correcto);*/
+        System.out.println("Cuarto: " + proceso_sin_acid_correcto);
+        */
     }
 }
