@@ -18,3 +18,17 @@ CREATE TABLE empresas (
     max_empleados INT,
     actual_empleados INT
 );
+
+CREATE TABLE vitrina (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    valor FLOAT,
+    nombre VARCHAR(255),
+    cantidad INT
+);
+
+CREATE TABLE bodega (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    valor FLOAT,
+    nombre VARCHAR(255),
+    cantidad INT
+);

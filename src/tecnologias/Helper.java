@@ -1,5 +1,7 @@
 package tecnologias;
 
+import java.util.List;
+
 
 public class Helper{
     
@@ -24,5 +26,21 @@ public class Helper{
     
     public String obtenerFecha() {
         return ihelper.obtenerFecha();
+    }
+    
+    public List<String> totalProductos() {
+        return ihelper.totalProductos();
+    }
+    
+    public String cantidadTotalProductos() {
+        return ihelper.cantidadTotalProductos();
+    }
+    
+    public List<String> diferenciaVitrinaABodega() {
+        return ihelper.diferenciaVitrinaABodega();
+    }
+    
+    public List<String> diferenciaBodegaAVitrina() {
+        return ihelper.diferenciaBodegaAVitrina();
     }
 }

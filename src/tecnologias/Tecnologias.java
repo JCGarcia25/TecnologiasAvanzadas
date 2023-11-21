@@ -4,6 +4,7 @@ package tecnologias;
  *
  * @author johancgarcia
  */
+import java.util.List;
 import java.util.Scanner;
 
 public class Tecnologias {
@@ -17,6 +18,36 @@ public class Tecnologias {
         
         System.out.println(hora);
         System.out.println(fecha);
+        
+        ProductoDAO productoDAO = new ProductoDAO();
+        
+        /*Producto productoAVitrina = new Producto("producto A", 1000, "vitrina", 10);
+        Producto productoBVitrina = new Producto("producto B", 500, "vitrina", 5);
+        Producto productoCVitrina = new Producto("producto C", 800, "vitrina", 8);
+        
+        Producto productoABodega = new Producto("producto A", 1500, "bodega", 15);
+        Producto productoCBodega = new Producto("producto C", 2000, "bodega", 20);
+        Producto productoDBodega = new Producto("producto D", 1200, "bodega", 12);
+        
+        productoDAO.agregarProducto(productoAVitrina);
+        productoDAO.agregarProducto(productoBVitrina);
+        productoDAO.agregarProducto(productoCVitrina);
+        productoDAO.agregarProducto(productoABodega);
+        productoDAO.agregarProducto(productoCBodega);
+        productoDAO.agregarProducto(productoDBodega);*/
+        
+        List<String> union = helper.totalProductos();
+        System.out.println(union);
+        
+        String cantidadTotal = helper.cantidadTotalProductos();
+        System.out.println(cantidadTotal);
+        
+        List<String> diferenciaVitrinaABodega = helper.diferenciaVitrinaABodega();
+        System.out.println(diferenciaVitrinaABodega);
+        
+        List<String> diferenciaBodegaAVitrina = helper.diferenciaBodegaAVitrina();
+        System.out.println(diferenciaBodegaAVitrina);
+        
         // instanciar la conexión a base de datos
         /*UsuarioDAO usuarioDAO = new UsuarioDAO();
         EmpresaDAO empresaDAO = new EmpresaDAO();
